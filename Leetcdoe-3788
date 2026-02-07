@@ -1,0 +1,40 @@
+class Solution {
+    public long maximumScore(int[] nums) {
+        long sum=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            sum=sum+nums[i];
+        }
+        int min=nums[nums.length-1];
+        long ans=Integer.MIN_VALUE;
+
+        long sum1=nums[nums.length-1];
+        //-9
+
+        for(int i=nums.length-2;i>=0;i--)
+        {
+              
+           
+            long temp=sum-sum1;
+           // System.out.println("temp is"+ temp);
+             ans=Math.max(ans,temp-min);
+           //  System.out.println("the ans is" + ans);
+              sum1=sum1+nums[i];
+              min=Math.min(min,nums[i]);
+            
+           
+
+          
+           
+            
+
+        }
+        return ans;
+        
+    }
+}
+// sum=-9
+//min=-2;
+//ans=9;
+//int sum1=3;
+
