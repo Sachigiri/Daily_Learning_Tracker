@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public List<Long> mergeAdjacent(int[] nums) {
+        Stack<Long> st = new Stack<>();
+        int i = 0;
+
+        while (i < nums.length) {
+            if (st.size() == 0) {
+                st.push((long) nums[i]); 
+            } else {
+                long top = nums[i];       
+                while (st.size() != 0 && st.peek() == top) {
+                    long a = st.pop();
+                    long sum = top + a;   
+                    top = sum;
+                }
+                st.push(top);
+            }
+            i++;
+        }
+
+        return new ArrayList<>(st);       
+    }
+}
