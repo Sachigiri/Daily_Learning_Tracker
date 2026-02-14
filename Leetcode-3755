@@ -1,0 +1,39 @@
+
+
+class Solution {
+
+    public int maxBalancedSubarray(int[] nums) {
+
+        int e = 0;
+        int o = 0;
+        int sum = 0;
+
+        HashMap<String, Integer> hm = new HashMap<>();
+
+        
+        hm.put("0#0", -1);
+
+        int ans = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+
+            sum = sum ^ nums[i];
+
+            if (nums[i] % 2 == 0) {
+                e++;
+            } else {
+                o--;   
+            }
+
+            String key = sum + "#" + (e + o);
+
+            if (hm.containsKey(key)) {
+                ans = Math.max(ans, i - hm.get(key)); 
+            } else {
+                hm.put(key, i); 
+            }
+        }
+
+        return ans;
+    }
+}
