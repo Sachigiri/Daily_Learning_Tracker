@@ -1,0 +1,26 @@
+class Solution {
+    public int binaryGap(int n) {
+        ArrayList<Integer>ans=new ArrayList<>();
+        while(n!=0){
+            ans.add(n%2);
+            n=n/2;
+        }
+        Collections.reverse(ans);
+        System.out.println(ans);
+        
+        int last=0;//2
+        int max=0;
+        for(int i=1;i<ans.size();i++)
+        {
+            if(ans.get(i)==1)
+            {
+                System.out.println(last+"-"+i);
+               max=Math.max(max,i-last);
+               last=i;
+            //   System.out.println(last+"seen at index"+ i);
+            }
+           
+        }
+        return max;
+    }
+}
