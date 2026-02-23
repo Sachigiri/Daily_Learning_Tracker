@@ -1,0 +1,27 @@
+class Solution {
+    public boolean hasAllCodes(String s, int k) {
+        Set<String>set=new HashSet<>();
+        int i=0;
+        int j=0;
+
+        String temp="";
+        while(j<s.length())
+        {
+            temp=temp+s.charAt(j);
+            if(j-i+1==k)
+            {
+                set.add(temp);
+
+                i++;
+                temp=s.substring(i,j+1);
+            }
+            j++;
+        }
+
+        if(set.size()==(1<<k))
+        {
+            return true;
+        }
+        return false;
+    }
+}
